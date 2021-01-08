@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\ToDoList;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ToDoListFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = ToDoList::class;
+    protected $model = Task::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,9 @@ class ToDoListFactory extends Factory
     public function definition()
     {
         return [
-            'task_name'=>$this->faker->sentence([2]),
+            'task_name'=>$this->faker->sentence(2),
             'description'=>$this->faker->paragraph,
-            'schedule'=>$this->faker->dateTimeInInterval('+3 week')
+            'schedule'=>$this->faker->dateTimeThisMonth('+2 month')
         ];
     }
 }
