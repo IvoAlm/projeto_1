@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('adiciona');
 });
+Route::get('/tasks', '\App\Http\Controllers\TaskController@show')->name('tasks');
