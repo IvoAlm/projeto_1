@@ -1,8 +1,22 @@
 @extends('layout.main')
 @section('content')
-    <ul class="list-group">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Schedule</th>
+        </tr>
+        </thead>
+        <tbody>
         @foreach($tasks as $task)
-            <li class="list-group-item list-group-item-primary">{{$task->task_name}}</li>
+            <tr>
+                <td>{{$task->task_name}}</td>
+                <td>{{$task->description}}</td>
+                <td>{{(new DateTime($task->schedule))->format('j F Y H:i:s')}}</td>
+            </tr>
         @endforeach
-    </ul>
+        </tbody>
+    </table>
+
 @stop
