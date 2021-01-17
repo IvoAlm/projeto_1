@@ -14,8 +14,10 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-Route::get('/create',[TaskController::class,'create'])->name('create') ;
-Route::post( '/store',[TaskController::class,'store'])->name('store');
+Route::post( '/',[TaskController::class,'store'])->name('store');
+Route::post('/',[TaskController::class,'update'])->name('update');
 
+Route::get('/create',[TaskController::class,'create'])->name('create') ;
 Route::get('/',[TaskController::class,'show'])->name('tasks');
+Route::get('/edit/{task}',[TaskController::class,'edit'])->name('edit');
 
