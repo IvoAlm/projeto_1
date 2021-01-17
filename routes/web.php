@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('adiciona');
+Route::get('/store', function () {
+    return view('store');
 });
-Route::get('/tasks', '\App\Http\Controllers\TaskController@show')->name('tasks');
+Route::get( '/naosei','\App\Http\Controllers\TaskController@store')->name('store');
+
+Route::get('/', '\App\Http\Controllers\TaskController@show')->name('tasks');
+

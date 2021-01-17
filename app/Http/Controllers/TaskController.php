@@ -22,7 +22,7 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -35,7 +35,12 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Task::create([
+            'task_name' => $request->task_name,
+            'description' => $request->description,
+            'schedule' => $request->schedule,
+        ]);
+        return $this->show();
     }
 
     /**
@@ -44,7 +49,7 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show(Task $task=null)
     {
         $tasks = Task::all();
         return view('index',compact('tasks'));
@@ -79,8 +84,10 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function delete(Task $task)
     {
-        //
+        $action = Task::find($task->id);
+        $action->delete();
+        return $this->show();
     }
 }
