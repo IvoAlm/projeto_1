@@ -24,7 +24,7 @@ class TaskController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        return view('create');
     }
 
     /**
@@ -35,11 +35,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create([
-            'task_name' => $request->task_name,
-            'description' => $request->description,
-            'schedule' => $request->schedule,
-        ]);
+        Task::create($request->all());
         return $this->show();
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/store', function () {
-    return view('store');
-});
-Route::get( '/naosei','\App\Http\Controllers\TaskController@store')->name('store');
+Route::get('/create',[TaskController::class,'create'])->name('create') ;
+Route::post( '/store',[TaskController::class,'store'])->name('store');
 
-Route::get('/', '\App\Http\Controllers\TaskController@show')->name('tasks');
+Route::get('/',[TaskController::class,'show'])->name('tasks');
 

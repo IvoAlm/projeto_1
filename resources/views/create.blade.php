@@ -1,7 +1,7 @@
 @extends('layout.main')
 @section('content')
     <div class="container">
-        <form action="{{route('store')}}">
+        <form action="{{route('store')}}" method="POST">
             @csrf
             <div class="form-group mb-3">
                 <label for="task_name" class="form-label">Name Task</label>
