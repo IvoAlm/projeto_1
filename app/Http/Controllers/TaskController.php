@@ -30,7 +30,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,49 +42,54 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param \App\Models\Task $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task=null)
+    public function show(Task $task = null)
     {
         $tasks = Task::all();
-        return view('index',compact('tasks'));
+        return view('index', compact('tasks'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param \App\Models\Task $task
      * @return \Illuminate\Http\Response
      */
     public function edit(Task $task)
     {
-        return view('edit',compact('task'));
+        return view('edit', compact('task'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Task  $task
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Task $task
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Task $task)
     {
-        $task->update($request->all());
+
+        $task->where('id', $request->id)
+            ->update([
+                'task_name' => $request->task_name,
+                'description' => $request->description,
+                'schedule' => $request->schedule
+            ]);
         return $this->show();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Task  $task
+     * @param \App\Models\Task $task
      * @return \Illuminate\Http\Response
      */
     public function delete(Task $task)
     {
-        $action = Task::find($task->id);
-        $action->delete();
+        $task->where('id', $task->id)->delete();
         return $this->show();
     }
 }
