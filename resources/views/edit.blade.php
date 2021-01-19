@@ -1,9 +1,8 @@
 @extends('layout.main')
 @section('content')
     <div class="container">
-        <form action="{{route('update')}}" method="POST">
+        <form action="{{route('update',[$task->id])}}" method="POST">
             @csrf
-            <input  type="hidden"  name="id" value="{{$task->id}}">
             <div class="form-group mb-3">
                 <label for="task_name" class="form-label">Name Task</label>
                 <input type="text" class="form-control" id="task_name" name="task_name" value="{{$task->task_name}}" placeholder="Enter name of the task">
@@ -15,7 +14,7 @@
             <div class="form-group mb-3">
                 <label for="schedule" class="form-label">Schedule</label>
 {{-- quando for add o front olhar uma maneira de aparecer o valor do date--}}
-                <input type="date" class="form-control" id="schedule"  name="schedule" value="{{$task->schedule}}">
+                <input type="datetime-local" class="form-control" id="schedule"  name="schedule" value="{{$task->schedule}}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

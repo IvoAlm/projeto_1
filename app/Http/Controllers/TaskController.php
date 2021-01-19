@@ -14,7 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::all();
+        return view('index', compact('tasks'));
     }
 
     /**
@@ -36,7 +37,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         Task::create($request->all());
-        return $this->show();
+        return redirect(route('tasks'));
     }
 
     /**
@@ -45,10 +46,8 @@ class TaskController extends Controller
      * @param \App\Models\Task $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task = null)
+    public function show(Task $task)
     {
-        $tasks = Task::all();
-        return view('index', compact('tasks'));
     }
 
     /**
@@ -71,14 +70,10 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
+        $task->fill($request->all());
+        $task->save();
 
-        $task->where('id', $request->id)
-            ->update([
-                'task_name' => $request->task_name,
-                'description' => $request->description,
-                'schedule' => $request->schedule
-            ]);
-        return $this->show();
+        return redirect(route('tasks'));
     }
 
     /**
@@ -89,7 +84,8 @@ class TaskController extends Controller
      */
     public function delete(Task $task)
     {
-        $task->where('id', $task->id)->delete();
-        return $this->show();
+        $task->delete();
+
+        return redirect(route('tasks'));
     }
 }

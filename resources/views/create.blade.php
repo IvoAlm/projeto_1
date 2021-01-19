@@ -13,7 +13,7 @@
             </div>
             <div class="form-group mb-3">
                 <label for="schedule" class="form-label">Schedule</label>
-                <input type="date" class="form-control" id="schedule" name="schedule">
+                <input type="datetime-local" class="form-control" id="schedule" name="schedule">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -15,10 +15,10 @@ use App\Http\Controllers\TaskController;
 */
 
 Route::post( '/store',[TaskController::class,'store'])->name('store');
-Route::post('/',[TaskController::class,'update'])->name('update');
+Route::post('/update/{task}',[TaskController::class,'update'])->name('update');
 
 Route::get('/create',[TaskController::class,'create'])->name('create') ;
-Route::get('/',[TaskController::class,'show'])->name('tasks');
+Route::get('/',[TaskController::class,'index'])->name('tasks');
 Route::get('/edit/{task}',[TaskController::class,'edit'])->name('edit');
 Route::get('/delete/{task}',[TaskController::class,'delete'])->name('delete');
 
