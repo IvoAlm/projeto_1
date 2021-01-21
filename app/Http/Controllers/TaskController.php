@@ -36,6 +36,11 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'task_name' => 'required|max:255',
+            'description' => 'required',
+            'schedule' => 'required',
+        ]);
         Task::create($request->all());
         return redirect(route('tasks'));
     }
