@@ -16,6 +16,13 @@
 {{-- quando for add o front olhar uma maneira de aparecer o valor do date--}}
                 <input type="datetime-local" class="form-control" id="schedule"  name="schedule" value="{{$task->schedule}}">
             </div>
+            <div class="form-group mb-3">
+                <label for="done_at" class="form-label">Status</label>
+                <select name="done_at" id="done_at">
+                    <option>Done</option>
+                    <option>Not Done</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <button type="submit" class="btn btn-primary"><a href="{{route('tasks')}}">Back</a></button>

@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('task_name');
             $table->text('description');
             $table->timestamp('schedule');
-            $table->timestamp('done_at')->nullable();
+            $table->string('done_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
