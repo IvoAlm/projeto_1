@@ -16,5 +16,6 @@ class Task extends Model
         'task_name',
         'schedule',
         'description',
+        'done_at'
     ];
 }
