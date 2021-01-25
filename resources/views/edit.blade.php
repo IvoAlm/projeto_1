@@ -17,8 +17,8 @@
                 <input type="datetime-local" class="form-control" id="schedule"  name="schedule" value="{{$task->schedule}}">
             </div>
             <div class="form-group mb-3">
-                <label for="done_at" class="form-label">Status</label>
-                <select name="done_at" id="done_at">
+                <label for="status" class="form-label">Status</label>
+                <select name="status" id="status">
                     <option>Done</option>
                     <option>Not Done</option>
                 </select>

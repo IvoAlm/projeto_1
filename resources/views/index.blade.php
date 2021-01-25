@@ -19,7 +19,7 @@
                     <td>{{$task->task_name}}</td>
                     <td>{{$task->description}}</td>
                     <td>{{(new DateTime($task->schedule))->format('j F Y H:i:s')}}</td>
-                    <td>{{$task->done_at ? 'Done' : 'Not Done'}}</td>
+                    <td>{{$task->status ? 'Done' : 'Not Done'}}</td>
                     <td>
                         <a href="{{route('edit',['task' => $task->id])}}">Edit</a>
                         <form action="{{route('delete',['task' => $task->id])}}">
