@@ -13,12 +13,18 @@ use App\Http\Controllers\TaskController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['auth'])->group(function (){
+    Route::post( '/store',[TaskController::class,'store'])->name('store');
+    Route::post('/update/{task}',[TaskController::class,'update'])->name('update');
 
-Route::post( '/store',[TaskController::class,'store'])->name('store');
-Route::post('/update/{task}',[TaskController::class,'update'])->name('update');
+    Route::get('/create',[TaskController::class,'create'])->name('create') ;
+    Route::get('/',[TaskController::class,'index'])->name('tasks');
+    Route::get('/edit/{task}',[TaskController::class,'edit'])->name('edit');
+    Route::get('/delete/{task}',[TaskController::class,'delete'])->name('delete');
 
-Route::get('/create',[TaskController::class,'create'])->name('create') ;
-Route::get('/',[TaskController::class,'index'])->name('tasks');
-Route::get('/edit/{task}',[TaskController::class,'edit'])->name('edit');
-Route::get('/delete/{task}',[TaskController::class,'delete'])->name('delete');
+});
 
+
+Route::get('/dashboard', [TaskController::class,'index'])->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

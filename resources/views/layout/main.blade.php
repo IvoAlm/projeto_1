@@ -1,5 +1,5 @@
 @include('layout.cabecalho')
-@include('layout.login')
+@include('layouts.navigation')
     @yield('content')
 @include('layout.rodape')
 
